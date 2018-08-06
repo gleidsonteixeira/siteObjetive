@@ -9,15 +9,38 @@ $(document).ready(function(){
     editarInfos();
     chatAdmin();
     permissoesAtendente();
+
     
+    //comoFunciona();
+    avaliacoes();
 });
 $(window).resize(function(){});
 $(window).scroll(function(){
     rolarBarraProgress();
     menu();
+    //comoFunciona();
     
 });
 $(window).load(function(){});
+
+function avaliacoes(){
+    setTimeout(function(){
+        $(".avaliacoes").addClass("active");
+    },3000)
+}
+
+function comoFunciona(){
+    var scroll = window.pageYOffset;
+    var posicaoX = $("#como-funciona").offset().top;
+    //var posicaoY = $("#como-funciona").offset().left;
+    var largura = $(window).width();
+    if(scroll == posicaoX){
+        $(".menu").css({"position":"fixed"});
+        
+    }else{
+        $(".menu").css({"position":"absolute"});
+    }
+}
 
 function permissoesAtendente(){
     $("#tipo_usu").change(function(){

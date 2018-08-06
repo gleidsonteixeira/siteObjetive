@@ -215,6 +215,10 @@ if (isset($_SESSION['login'])) {
 
                                 </div>
                                 <div class="input-field">
+                                    <textarea id="descricao" name="descricao" class="materialize-textarea"></textarea>
+                                    <label for="descricao">Descrição</label>
+                                </div>
+                                <div class="input-field">
                                     <textarea id="palavrasChave" name="palavrasChave" class="materialize-textarea"></textarea>
                                     <label for="palavrasChave">Palavras Chave</label>
                                 </div>

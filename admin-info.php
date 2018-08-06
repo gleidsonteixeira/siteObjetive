@@ -163,7 +163,8 @@ if (isset($_SESSION['login'])) {
                     ?>
                     <h6 class="fontbold">Página principal <i class="mdi-content-create right click suave editar-pag-principal" data-idpag='<?php echo utf8_encode($row->idpagina_principal); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
 
-                    <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?> </p>
+                    <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
+                    <p><b>Descrição:</b>descrição da página aqui</p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?> </p>
 
                     <div class="overflow suave">
@@ -173,6 +174,10 @@ if (isset($_SESSION['login'])) {
                             <div class="input-field">
                                 <input type="text" id="tituloDaPagina" name="tituloDaPagina">
                                 <label for="tituloDaPagina">Titulo da Página</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="descricaoDaPagina" name="descricaoDaPagina">
+                                <label for="descricaoDaPagina">Descrição da Página</label>
                             </div>
                             <div class="input-field">
                                 <textarea id="palavrasChave" name="palavrasChave" class="materialize-textarea"></textarea>
@@ -195,7 +200,8 @@ if (isset($_SESSION['login'])) {
 
                     <h6 class="fontbold">Página tipo de conta <i class="mdi-content-create right click suave editar-pag-tipo-conta" data-idtipc='<?php echo utf8_encode($row->idpagina_tipo_conta); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
 
-                    <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?> </p>
+                    <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
+                    <p><b>Descrição:</b>descrição da página aqui</p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?> </p>
 
                     <div class="overflow suave">
@@ -205,6 +211,10 @@ if (isset($_SESSION['login'])) {
                             <div class="input-field">
                                 <input type="text" id="tituloDaPaginaTC" name="tituloDaPaginaTC">
                                 <label for="tituloDaPaginaTC">Titulo da Página</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="descricaoDaPaginaTC" name="descricaoDaPaginaTC">
+                                <label for="descricaoDaPaginaTC">Descrição da Página</label>
                             </div>
                             <div class="input-field">
                                 <textarea id="palavrasChaveTC" name="palavrasChaveTC" class="materialize-textarea"></textarea>
@@ -226,6 +236,7 @@ if (isset($_SESSION['login'])) {
                     <h6 class="fontbold">Página faq <i class="mdi-content-create right click suave editar-pag-faq" data-idfaq='<?php echo utf8_encode($row->idpagina_faq); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
+                    <p><b>Descrição:</b>descrição da página aqui</p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?></p>
 
                     <div class="overflow suave">
@@ -235,6 +246,10 @@ if (isset($_SESSION['login'])) {
                             <div class="input-field">
                                 <input type="text" id="tituloDaPaginaF" name="tituloDaPaginaF">
                                 <label for="tituloDaPaginaF">Titulo da Página</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="descricaoDaPaginaF" name="descricaoDaPaginaF">
+                                <label for="descricaoDaPaginaF">Descrição da Página</label>
                             </div>
                             <div class="input-field">
                                 <textarea id="palavrasChaveF" name="palavrasChaveF" class="materialize-textarea"></textarea>
@@ -256,6 +271,7 @@ if (isset($_SESSION['login'])) {
                     <h6 class="fontbold">Página Blog <i class="mdi-content-create right click suave editar-pag-blog" data-idblog='<?php echo utf8_encode($row->idpagina_blog); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
+                    <p><b>Descrição:</b>descrição da página aqui</p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?></p>
 
                     <div class="overflow suave">
@@ -265,6 +281,10 @@ if (isset($_SESSION['login'])) {
                             <div class="input-field">
                                 <input type="text" id="tituloDaPaginaB" name="tituloDaPaginaB">
                                 <label for="tituloDaPaginaF">Titulo da Página</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="descricaoDaPaginaB" name="descricaoDaPaginaB">
+                                <label for="descricaoDaPaginaB">Descrição da Página</label>
                             </div>
                             <div class="input-field">
                                 <textarea id="palavrasChaveB" name="palavrasChaveB" class="materialize-textarea"></textarea>

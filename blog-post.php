@@ -32,273 +32,202 @@ if (isset($_SESSION['login'])) {
                     <meta name="robots" content="index, follow">
                     <meta name="language" content="pt-br" />
 
-                    <link rel="canonical" href="https://walletfamily.com" />
-                    <link rel="shortlink" href="https://walletfamily.com" />
+                    <link rel="canonical" href="https://objetiveti.com.br" />
+                    <link rel="shortlink" href="https://objetiveti.com.br" />
                     <link rel="stylesheet" href="css/font-awesome.css" type="text/css"/>
                     <link rel="stylesheet" href="css/materialize.css" type="text/css"/>
                     <link rel="stylesheet" href="css/extras.css" type="text/css"/>
-                    <link rel="icon" href="https://walletfamily.com/iconsite.png" sizes="32x32" />
-                    <link rel="icon" href="https://walletfamily.com/iconsite.png" sizes="192x192" />
-                    <link rel="apple-touch-icon-precomposed" href="https://walletfamily.com/iconsite.png" />
+                    <link rel="icon" href="img/favicon.jpg" sizes="32x32" />
+                    <link rel="icon" href="img/favicon.jpg" sizes="192x192" />
+                    <link rel="apple-touch-icon-precomposed" href="img/favicon.jpg" />
                     <!-- Global site tag (gtag.js) - Google Analytics -->
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122824438-1"></script>
                     <script>
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', 'UA-122824438-1');
+                        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                        ga('create', 'UA-104056819-1', 'auto');
+                        ga('send', 'pageview');
                     </script>
-
                 </head>
 
                 <body class="white">
 
-                    <ul id="slide-out" class="side-nav font">
-                        <div class="perfil">
-                            <img src="img/wallet-logo.png"/>
-                            <p class="condesed white-text">
-                                (99) 99999-9999<br>
-                                contato@seusite.com.br
-                            </p>
-                        </div>
-                        <li>
-                            <a href="index.php" class="active suave font">
-                                Início
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tipodeconta.php" class="suave scrollto font">
-                                Tipos de Contas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php#como-funciona" class="suave scrollto font">
-                                Como Funciona
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php#vantagens" class="suave scrollto font">
-                                Vantagens
-                            </a>
-                        </li>
-                        <li>
-                            <a href="faq.php" class="suave scrollto font">
-                                FAQ
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="mdi-navigation-menu click menu-btn circle button-collapse hide-on-large-only" data-activates="slide-out"></i>
-
-                    <header id="topo" class="suave interno">
-                        <div class="logo suave">
-                            <h1 class="nm" alt="Direto na Mídia">
-                                <a href="index.php" title="" class="font suave">
-                                    <img src="img/wallet-logo.png" alt="Wallet Family"/>
-                                </a>
-                            </h1>
-                        </div>
-                        <div class="menu hide-on-med-and-down suave">
+                    <section id="inicio" class="interna">
+                        <div class="menu suave">
+                            <div class="verMenu click">
+                                <i class="mdi-navigation-menu"></i>
+                            </div>
+                            <div class="logo">
+                                <a href="index.php"><img src="img/logo-objetive-ti.png" alt="Objetive TI" class="responsive-img"/></a>
+                            </div>
                             <ul class="nm">
-                                <li>
-                                    <a href="index.php" class="active suave font">
-                                        Início
-                                    </a>
+                                <!-- <li>
+                                    <a href="#!">Data Center</a>
                                 </li>
                                 <li>
-                                    <a href="tipodeconta.php" class="suave font scrollto">
-                                        Tipos de Contas
-                                    </a>
+                                    <a href="#!">Desenvolvimento</a>
                                 </li>
                                 <li>
-                                    <a href="index.php#como-funciona" class="suave font scrollto">
-                                        Como Funciona
-                                    </a>
+                                    <a href="#!">Marketing Digital</a>
+                                </li> -->
+                                <li>
+                                    <a href="#como-trabalhamos" class="scrollto">Como Trabalhamos</a>
                                 </li>
                                 <li>
-                                    <a href="index.php#vantagens" class="suave font scrollto">
-                                        Vantagens
-                                    </a>
+                                    <a href="#cases" class="scrollto">Cases</a>
                                 </li>
                                 <li>
-                                    <a href="faq.php" class="suave font scrollto">
-                                        FAQ
-                                    </a>
+                                    <a href="#blog" class="scrollto">Blog</a>
                                 </li>
+                                <!-- <li>
+                                    <a href="faq.php">FAQ</a>
+                                </li> -->
                             </ul>
+                            <div class="areaCliente">
+                                <a href="#!" class="waves-effect"><i class="mdi-action-account-circle left"></i> Área do Cliente</a> 
+                            </div>
                         </div>
-                        <div class="acoes">
-                            <a href="https://walletfamily.com/acessowallet/" class="login font suave">
-                                <b class="hide-on-med-and-down">Entrar</b>
-                                <b class="hide-on-large-only"><i class="mdi-action-lock"></i></b>
-                            </a>
-                            <a href="https://walletfamily.com/register/" class="hide-on-small-only novaConta font suave">
-                                <b class="hide-on-med-and-down">Criar conta</b>
-                                <b class="hide-on-large-only"><i class="mdi-social-person-add"></i></b>
-                            </a>
-                        </div>
-                    </header>
+                        <!-- <div class="avaliacoes">
+                            <i class="mdi-social-mood fix suave"></i>
+                            <span class="suave">O que achou de nossa empresa?</span>
+                        </div> -->
+                    </section>
 
                     <main>
-                        <section id="chat">
-                            <button class="but abre-gaveta">
-                                <span>
-                                    <i class="mdi-communication-forum left"></i>
-                                    Fale Conosco
-                                </span>
-                            </button>
-                            <div class="gaveta">
-                                <div class="boas-vindas suave">
-                                    <span class="click fecha-gaveta click">
-                                        <i class="mdi-navigation-close"></i>
-                                    </span>
-                                    <h6 class="font"><i class="mdi-communication-forum suave"></i></h6>    
-                                </div>
-                                <div class="chat-logout suave">
-                                    <p class="font">Este é o atendimento online da Wallet Family, preencha os campos abaixo para iniciar.</p>
-                                    <form id="comecar-conversa">
-                                        <div class="input-field">
-                                            <input type="text" id="chat-nome" name="nome" required>
-                                            <label for="nome">Digite seu nome</label>
-                                        </div>
-                                        <div class="input-field">
-                                            <input type="email" id="chat-email" name="email" required>
-                                            <label for="email">Digite seu email</label>
-                                        </div>
-                                        <button type="submit" class="font"><b>começar</b></button>
-                                        <span class="click fecha-gaveta">Agora não</span>
-                                    </form>
-                                </div>
-                                <div class="chat-login deactive">
-                                    <ul class="nm">
-                                        <li class="atendente"><span>Olá, como podemos ajudá-lo?</span></li>
-                                    </ul>
-                                    <input type="hidden" id="sala">
-                                    <input type="hidden" id="nome">
-                                    <input type="text" id="chat-resposta" placeholder="Digite sua pergunta" required>
-                                    <button><i class="mdi-content-send"></i></button>
-                                </div>
-                            </div> 
-                        </section>
                         <section id="blog-interna">
                             <div class="titulo">
-                                <h1 class="fontbold">Blog</h1>
-                                <p class="font">Veja as principais notícias sobre o mercado financeiro.</p>
+                                <h2><b>Blog</b></h2>
+                                <!-- <p class="font">Veja as principais notícias sobre o mercado financeiro.</p> -->
                             </div>
                             <div class="container">
                                 <div class="row nm">
-                                    <div class="col l8 m7 s12">
-                                        <ul class="posts">
-
-                                            <li class="suave">
-                                                <a href="#!">
-                                                    <div class="imagem">
-                                                        <img src="<?php echo $row->ds_caminho_img_destaque ?>" class="responsive-img">
-                                                        <span><?php echo $row->categoria_ds_categoria ?></span>
-                                                    </div>
-                                                    <div class="dados">
-                                                        <h3 class="font"><?php echo $row->ds_titulo ?></h3>
-                                                        <p class="font"><?php echo $row->ds_conteudo ?></p>
-                                                        <div class="clear"></div>
-                                                    </div>
-                                                </a>
-                                            </li>
-
+                                <div class="col l3 m5 s12" style="margin-top: 80px;background-color: #a6296e; border-radius: 4px;">
+                                    <div class="pesquisar nm">
+                                        <h6 class="white-text">Pesquisa:</h6>
+                                        <form action="pesquisa.php" method="GET">
+                                            <div class="input-field">
+                                                <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
+                                                <button type="submit"><i class="mdi-action-search"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="pesquisar">
+                                        <h6 class="white-text">Categorias:</h6>
+                                        <ul class="categorias">
+                                            <?php 
+                                            $rs_cat = $con->query("select * from categoria;");
+                                            while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <li class="font suave"><a href="blog.php?ds_categoria=<?php echo $row_cat->ds_categoria; ?>"><?php echo $row_cat->ds_categoria; ?></a></li>
+                                                <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
-                                    <div class="col l4 m5 s12">
-                                        <div class="pesquisar">
-                                            <h6>Pesquisa:</h6>
-                                            <form action="pesquisa.php" method="GET">
-                                                <div class="input-field">
-                                                    <input type="text" id="pesquisa" name="pesquisa">
-                                                    <label for="pesquisa">Pesquisar</label>
-                                                    <button type="submit"><i class="mdi-content-send"></i></button>
+                                    <!-- <div class="pesquisar" style="margin-top: 20px;">
+                                        <h6>Publicações recentes:</h6>
+                                        <ul class="recentes">
+                                            <?php 
+                                            // $rs_cat = $con->query("select idpost_blog,ds_titulo,ds_caminho_img_destaque from post_blog order by data_hora LIMIT 5;");
+                                            // while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <li class="font suave">
+                                                    <a href="blog-post.php?idpost_blog=<?php //echo $row_cat->idpost_blog ?>">
+                                                        <img src="<?php //echo $row_cat->ds_caminho_img_destaque ?>" class="responsive-img">
+                                                        <?php //echo $row_cat->ds_titulo ?>
+                                                    </a>
+                                                </li>
+                                                <?php
+                                            //}
+                                            ?>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                                    <div class="col l9 m7 s12">
+                                        <ul class="posts">
+                                            <li class="suave unico">
+                                                <div class="imagem">
+                                                    <img src="<?php echo $row->ds_caminho_img_destaque ?>" class="responsive-img">
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <div class="pesquisar" style="margin-top: 50px;">
-                                            <h6>Categorias:</h6>
-                                            <ul class="categorias">
-                                                <?php 
-                                                $rs_cat = $con->query("select * from categoria;");
-
-                                                while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
-                                                    ?>
-                                                    <li class="font suave"><a href="blog.php?ds_categoria=<?php echo $row_cat->ds_categoria; ?>"><?php echo $row_cat->ds_categoria; ?></a></li>
-                                                    <?php
-                                                }
-
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="pesquisar" style="margin-top: 50px;">
-                                            <h6>Publicações recentes:</h6>
-                                            <ul class="recentes">
-                                                <?php 
-                                                $rs_cat = $con->query("select idpost_blog,ds_titulo,ds_caminho_img_destaque from post_blog order by data_hora LIMIT 5;");
-
-                                                while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
-                                                    ?>
-                                                    <li class="font suave">
-                                                        <a href="blog-post.php?idpost_blog=<?php echo $row_cat->idpost_blog; ?>">
-                                                            <img src="<?php echo $row_cat->ds_caminho_img_destaque ?>" class="responsive-img">
-                                                            <?php echo $row_cat->ds_titulo ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-
-                                                ?>
-                                            </ul>
-                                        </div>
+                                                <div class="dados">
+                                                    <span class="upper mini-title"><?php echo $row->categoria_ds_categoria ?></span>
+                                                    <h3><b><?php echo $row->ds_titulo ?></b></h3>
+                                                    <p><?php echo $row->ds_conteudo ?></p>
+                                                    <div class="autor np">
+                                                        <div class="foto"></div>
+                                                        <h6 class="upper mini-title">Nome do autor</h6>
+                                                        <span class="data"><b>00/00/0000<?php //echo $row->data_hora; ?></b></span>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </main>
 
-                    <footer id="" class="">
+                    <footer>
                         <div class="container">
                             <div class="row">
-                                <div class="col l2 m4 s6">
-                                    <ul>
-                                        <li><h6 class="font"><b>Recursos</b></h6></li>
-                                        <li class="font"><a href="#!">Emissão de Boletos</a></li>
-                                        <li class="font"><a href="#!">Cartão de Crédito</a></li>
-                                        <li class="font"><a href="#!">Recargas</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col l2 m4 s6">
-                                    <ul>
-                                        <li><h6 class="font"><b>Wallet Family</b></h6></li>
-                                        <li class="font"><a href="">Quem somos</a></li>
-                                        <li class="font"><a href="">Termos de uso</a></li>
-                                        <li class="font"><a href="">Regras</a></li>
-                                        <li class="font"><a href="">Blog</a></li>
-                                        <li class="font"><a href="">FAQ</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col l3 m4 s12 center-on-small-only">
+                                <div class="col l5 m4 s12 center-on-small-only">
+                                    <h5><img src="img/logo-objetive-ti2.png" alt="Objetive TI"></h5>
+                                    <p style="padding-right:20px;">A Objetive TI é uma empresa 100% focada no crescimento do seu negócio. Nossa equipe multidisciplinar está pronta para lhe ajudar em todos os âmbitos necessários.</p>
                                     <ul>
                                         <?php 
-                                        $rs = $con->query("select * from contatos;");
-                                        while($row = $rs->fetch(PDO::FETCH_OBJ)){
-                                            ?>
-                                            <li><h6 class="font"><b>Contatos</b></h6></li>
-                                            <li class="font"><?php echo $row->ds_email; ?></a></li>
+                                            //$rs = $con->query("select * from contatos;");
+                                            //while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                                        ?>
+                                            <li class="font"><?php //echo $row->ds_email; ?></a></li>
                                             <li class="font"><?php //echo $row->ds_telefone; ?></li>
-                                            <li class="font">Av Humberto Monte 2929 - sala 307 - Fortaleza-CE</li>
-                                            <?php 
-                                        }
+                                            <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
+                                        <?php 
+                                            //}
                                         ?>
                                     </ul>
-
+                                    <div class="redes">
+                                        <?php 
+                                            //$rs = $con->query("select * from redes_sociais;");
+                                            //while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                                        ?>
+                                            <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
+                                            <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
+                                            <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
+                                            <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
+                                        <?php 
+                                            //}
+                                            //$rs = $con->query("select * from contatos;");
+                                            //while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                                        ?>
+                                            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
+                                        <?php 
+                                            //}
+                                        ?>
+                                    </div>
                                 </div>
-                                <div class="col l4 offset-l1 m10 offset-m1 s12 ajuste">
+                                <div class="col l2 m4 s6">
                                     <ul>
-                                        <li><h6 class="font"><b>Inscreva-se para novidades</b></h6></li>
-                                        <li class="font" style="line-height: 20px;">A Wallet Family está constantemente evoluindo e crescendo, faça parte da nossa lista vip e fique sempre por dentro dos nossos lançamentos!</a></li>
+                                        <li><h6 style="color: #f06060;"><b>Soluções</b></h6></li>
+                                        <li class="font"><a href="#!">Data Center</a></li>
+                                        <li class="font"><a href="#!">Desenvolvimento</a></li>
+                                        <li class="font"><a href="#!">Marketing Digital</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col l2 m4 s6">
+                                    <ul>
+                                        <li><h6 style="color:#8d6cd3;"><b>A Empresa</b></h6></li>
+                                        <li class="font"><a href="#!">Sobre</a></li>
+                                        <li class="font"><a href="blog.php">Blog</a></li>
+                                        <!-- <li class="font"><a href="faq.php">FAQ</a></li> -->
+                                    </ul>
+                                </div>
+                                <div class="col l3 m10 offset-m1 s12 ajuste">
+                                    <ul>
+                                        <li><h6 style="color:#a6296e;"><b>Inscreva-se para novidades</b></h6></li>
+                                        <li class="font" style="line-height: 20px;">Faça parte da nossa lista vip para receber nossas atualizações!</a></li>
                                     </ul>
                                     <form id="formulario_newsletter">
                                         <div class="input-field">
@@ -308,31 +237,14 @@ if (isset($_SESSION['login'])) {
                                         </div>
                                     </form>
                                 </div>
-
-                            </div>
-                            <div class="redes">
-                                <?php 
-                                $rs = $con->query("select * from redes_sociais;");
-                                while($row = $rs->fetch(PDO::FETCH_OBJ)){
-                                    ?>
-                                    <a target="_blank" href="<?php echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
-                                    <a target="_blank" href="<?php echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
-                                    <a target="_blank" href="<?php echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
-                                    <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
-                                    <?php 
-                                }
-
-                                $rs = $con->query("select * from contatos;");
-                                while($row = $rs->fetch(PDO::FETCH_OBJ)){
-                                    ?>
-                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
-                                    <?php 
-                                }
-                                ?>
+                                <div id="alerta" class="suave hide">
+                                    <p class="font"><i class="mdi-alert-error left"></i><span>Mensagem</span></p>
+                                </div>
                             </div>
                         </div>
-
-                        <h5 class="center-align nm font"><b>&copy 2018 Wallet Family | Todos os direitos reservados.</b></h5>
+                        <h5 class="center-align nm font">
+                            &copy 2018 Objetive TI - Feito com <i class="mdi-action-favorite"></i> para você.</b>
+                        </h5>
                     </footer>
 
                     <script src="js/jquery.js"></script>
@@ -348,9 +260,6 @@ if (isset($_SESSION['login'])) {
                     <script src="js/newsletter-ajax.js"></script>
                     <script src="js/pesquisa-ajax.js"></script>
                     <script>
-                        logarAnonimamente();
-                        chat();
-                        depoimentos();
                     </script>
                 </body>
                 </html>
