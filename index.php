@@ -41,8 +41,8 @@ if (isset($_SESSION['login'])) {
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122824438-1"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-104056819-1', 'auto');
             ga('send', 'pageview');
@@ -149,8 +149,8 @@ if (isset($_SESSION['login'])) {
                     <h6>experimente</h6>
                     <h1><b></b></h1>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#!">Link</a> -->
-                </div>
+                        <a href="#!">Link</a> -->
+                    </div>
                 <!-- <div class="avaliacoes">
                     <i class="mdi-social-mood fix suave"></i>
                     <span class="suave">O que achou de nossa empresa?</span>
@@ -189,30 +189,29 @@ if (isset($_SESSION['login'])) {
                 <div class="slider">
                     <ul class="slides">
                         <?php 
-                            // $rs = $con->query("select * from banner;");
-                            // while($row = $rs->fetch(PDO::FETCH_OBJ)){
-                        ?>
+                        $rs = $con->query("select * from banner;");
+                        while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                            ?>
                             <li>
-                                <img src=<?php //echo $row->ds_caminho_img_banner; ?> alt="" title="">
+                                <img src=<?php echo $row->ds_caminho_img_banner; ?> alt="<?php echo $row->ds_titulo; ?>" title="<?php echo $row->ds_titulo; ?>">
                                 <div class="caption right-align">
                                     <h6 class="subtitulo font upper mini-title">
-                                        Desenvolvimento do site
-                                        <?php //echo $row->ds_pre_titulo; ?>
+                                        <?php echo $row->ds_pre_titulo; ?>
                                     </h6>
                                     <h1 class="titulo fontbold nm">
-                                        <b>Wallet Family
-                                        <?php //echo $row->ds_titulo; ?>
+                                        <b>
+                                            <?php echo $row->ds_titulo; ?>
                                         </b>
                                     </h1>
                                     <div class="clear"></div>
-                                    <a href=<?php //echo $row->ds_link_video; ?> target="_blank" class="suave mini-title upper">Conhecer</a>
+                                    <a href=<?php echo $row->ds_link_video; ?> target="_blank" class="suave mini-title upper">Conhecer</a>
                                     <!-- <a data-video=<?php //echo $row->ds_link_video; ?> class="font click chamaVideo">
                                         <b>Assista o vídeo</b><i class="mdi-av-play-arrow right"></i>
                                     </a> -->
                                 </div>
                             </li>
-                        <?php 
-                            //}
+                            <?php 
+                        }
                         ?>
                     </ul>
                 </div>
@@ -221,60 +220,46 @@ if (isset($_SESSION['login'])) {
                 <div class="container">
                     <h2 class="center-align"><b>Blog</b></h2>
                     <div class="row nm">
-                    <?php 
-                            // $rs = $con->query("select post_blog.* from post_blog order by data_hora LIMIT 2;");
-                            // $i = 1;
-                            // while($row = $rs->fetch(PDO::FETCH_OBJ)){
-                            //     if ($i == 2) {
-                        ?>
-                            <div class="col l4 m6 s12 hide-on-small-only">
-                                <div class="item suave">
-                                    <div class="imagem">
-                                        <a href="blog-post.php?idpost_blog=<?php //echo $row->idpost_blog ?>">
-                                            <!-- <img src="<?php //echo $row->ds_caminho_img_destaque; ?>"> -->
-                                        </a>
-                                    </div>
-                                    <div class="descricao">
-                                        <h6 class="upper mini-title"><b>categoria<?php //echo $row->categoria_ds_categoria; ?></b></h6>
-                                        <h5 class="fontbold"><b>Titulo da publicação<?php //echo $row->ds_titulo; ?>.</b></h5>
-                                        <p class="font" style="height: 150px; overflow: hidden;">
-                                        A Objetive TI levanta as informações necessárias para o projeto com os colaboradores que entendem o processo da empresa através de entrevistas, análise de documentos e sistemas.
-                                            <?php //echo $row->ds_conteudo; ?>
-                                        </p>
-                                    </div>
-                                    <div class="autor">
-                                        <div class="foto"></div>
-                                        <h6 class="upper mini-title">Nome do autor</h6>
-                                        <span class="data"><b>00/00/0000<?php //echo $row->data_hora; ?></b></span>
-                                    </div>
-                                </div>
-                            </div>
                         <?php 
-                            //}else{
-                        ?>
-                            <!-- <div class="col l6 m6 s12">
-                                <div class="item suave">
-                                    <span class="data white-text"><b><?php //echo $row->data_hora; ?></b></span>
-                                    <div class="imagem">
-                                        <img src="<?php //echo $row->ds_caminho_img_destaque; ?>">
-                                    </div>
-                                    <div class="descricao">
-                                        <h6><b><?php //echo $row->categoria_ds_categoria; ?></b></h6>
-                                        <h5 class="fontbold"><?php //echo $row->ds_titulo; ?>.</h5>
-                                        <p class="font" style="height: 150px; overflow: hidden;"><?php //echo $row->ds_conteudo; ?></p>
-                                        <a href="blog-post.php?idpost_blog=<?php //echo $row->idpost_blog ?>" class="fontbold">Leia mais <i class="mdi-navigation-arrow-forward right"></i></a>
+                        $rs = $con->query("select post_blog.* from post_blog order by data_hora LIMIT 3;");
+                        while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                                ?>
+                                <div class="col l4 m6 s12 hide-on-small-only">
+                                    <div class="item suave">
+                                        <div class="imagem">
+                                            <a href="blog-post.php?idpost_blog=<?php echo $row->idpost_blog ?>">
+                                                <img src="<?php echo $row->ds_caminho_img_destaque; ?>">
+                                            </a>
+                                        </div>
+                                        <div class="descricao">
+                                            <h6 class="upper mini-title"><b><?php echo $row->categoria_ds_categoria; ?></b></h6>
+                                            <h5 class="fontbold"><b><?php echo $row->ds_titulo; ?>.</b></h5>
+                                            <p class="font" style="height: 150px; overflow: hidden;">
+                                                <?php echo $row->ds_conteudo; ?>
+                                            </p>
+                                        </div>
+                                        <div class="autor">
+                                            <div class="foto"></div>
+                                            <h6 class="upper mini-title"><?php echo $row->ds_autor; ?></h6>
+                                            <span class="data"><b>
+                                                <?php 
+                                                $data = $row->data_hora;
+                                                $array = explode('-', $data); 
+                                                echo $array[2]."/".$array[1]."/".$array[0]; 
+                                                ?>
+
+                                            </b></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div> -->
-                        <?php
-                            //     }
-                            //     $i++;
-                            // }
-                        ?>
-                   </div>
-                    <a href="blog.php" class="vermais suave upper mini-title"><span>Ver todos</span></a>
-                </div>
-            </section>
+                                
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <a href="blog.php" class="vermais suave upper mini-title"><span>Ver todos</span></a>
+                    </div>
+                </section>
             <!-- <section id="chat">
                 <button class="but abre-gaveta">
                     <span>
@@ -355,9 +340,9 @@ if (isset($_SESSION['login'])) {
                                 //$rs = $con->query("select * from contatos;");
                                 //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                             ?>
-                                <li class="font"><?php //echo $row->ds_email; ?></a></li>
-                                <li class="font"><?php //echo $row->ds_telefone; ?></li>
-                                <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
+                            <li class="font"><?php //echo $row->ds_email; ?></a></li>
+                            <li class="font"><?php //echo $row->ds_telefone; ?></li>
+                            <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
                             <?php 
                                 //}
                             ?>
@@ -367,16 +352,16 @@ if (isset($_SESSION['login'])) {
                                 //$rs = $con->query("select * from redes_sociais;");
                                 //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                             ?>
-                                <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
-                                <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
-                                <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
-                                <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
+                            <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
+                            <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
+                            <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
                             <?php 
                                 //}
                                 //$rs = $con->query("select * from contatos;");
                                 //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                             ?>
-                                <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
                             <?php 
                                 //}
                             ?>
@@ -421,10 +406,10 @@ if (isset($_SESSION['login'])) {
             </h5>
         </footer>
 
-<script src="js/jquery.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/jcarousellite.js"></script>
-<script src="js/goodscroll.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/jcarousellite.js"></script>
+        <script src="js/goodscroll.js"></script>
 <!-- <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>

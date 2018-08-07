@@ -45,119 +45,13 @@ if (isset($_SESSION['login'])) {
             </div>
             <span class="font">Área Administrativa:</span>
             <ul class="nm">
-                <?php 
-                $arr1 = str_split($_SESSION['ds_acesso_menu']);
-
-                if ($arr1[0] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin.php" class="font suave"><i class="mdi-action-dashboard"></i>Dashboard</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[1] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-banners.php" class="font suave"><i class="mdi-action-view-carousel"></i>Banners</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[2] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-depoimentos.php" class="font suave"><i class="mdi-action-account-circle"></i>Depoimentos</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[3] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-tickets.php" class="font suave"><i class="mdi-social-group"></i> Tickets</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[4] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-chat.php" class="font suave"><i class="mdi-action-question-answer"></i> Chat</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[5] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-blog.php" class="font suave"><i class="mdi-editor-insert-comment"></i> Blog</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[6] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-categorias.php" class="font suave"><i class="mdi-action-view-list"></i> Categorias</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[7] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-faq.php" class="font suave"><i class="mdi-action-help"></i> FAQs</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[8] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-newsletter.php" class="font suave"><i class="mdi-communication-email"></i> Newsletter</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[9] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-info.php" class="font suave"><i class="mdi-action-info"></i> Informações</a>
-                    </li>
-                    <?php 
-                }
-
-                if ($arr1[10] == 1) {
-
-                    ?>
-                    <li>
-                        <a href="admin-usuarios.php" class="font suave"><i class="mdi-social-person-add"></i> Usuários</a>
-                    </li>
-                    <?php 
-                }
-
-                ?>
-                <li>
-                    <a href="logout.php" class="font suave"><i class="mdi-action-lock-open"></i> Sair</a>
-                </li>
-
+                <?php include "menu.php"; ?>
             </ul>
         </div>
 
         <div id="content" class="active suave">
             <i class="mdi-navigation-menu menu-btn suave click"></i>
-            <h3 class="font suave"><span>Banners</span></h3>
+            <h3 class="font suave"><span>Cases</span></h3>
             <div class="lista-banners">
                 <ul>
                     <?php 
@@ -179,7 +73,7 @@ if (isset($_SESSION['login'])) {
                                 </h6>
                             </div>
                             <div class="sub-infos">
-                                <span class="font">Link do Vídeo:</span>
+                                <span class="font">Link do case:</span>
                                 <h6 class="truncate">
                                     <?php echo $row->ds_link_video; ?>
                                 </h6>
@@ -197,7 +91,7 @@ if (isset($_SESSION['login'])) {
                 <div class="novoBanner suave">
                     <i class="mdi-navigation-close click close"></i>
                     <form class="white suave" enctype="multipart/form-data" id="formulario">
-                        <h6 class="fontbold">Cadastrar Banner</h6>
+                        <h6 class="fontbold">Cadastrar Case</h6>
                         <div class="input-field">
                             <input type="text" id="pretitulo" name="pretitulo">
                             <label for="pretitulo">Pré-titulo</label>
@@ -218,7 +112,7 @@ if (isset($_SESSION['login'])) {
                         <input type="submit" class="fontbold" value="confirmar">
                     </form>
                 </div>
-                <button class="novoBannerBtn fontbold"><i class="mdi-content-add left"></i> add Banner</button>
+                <button class="novoBannerBtn fontbold"><i class="mdi-content-add left"></i> add Case</button>
             </div>
             <div id="alerta" class="suave">
                 <p class="font"><i class="mdi-alert-error left"></i><span>Mensagem</span></p>
