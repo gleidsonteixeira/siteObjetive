@@ -21,7 +21,7 @@ if (isset($_SESSION['login'])) {
         <meta http-equiv="cache-control" content="public" />
         <meta http-equiv="Pragma" content="public">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-        <meta name="description" content=""/>
+        <meta name="description" content="<?php echo utf8_encode($row->ds_descricao); ?>"/>
         <meta name="keywords" content='<?php echo utf8_encode($row->ds_palavras_chaves); ?>'/>
         <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
         <meta name="robots" content="index, follow">

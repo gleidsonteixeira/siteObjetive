@@ -55,10 +55,10 @@ if (isset($_SESSION['login'])) {
                 $rs = $con->query("select * from pagina_principal;");
                 while($row = $rs->fetch(PDO::FETCH_OBJ)){
                     ?>
-                    <h6 class="fontbold">Página principal <i class="mdi-content-create right click suave editar-pag-principal" data-idpag='<?php echo utf8_encode($row->idpagina_principal); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
+                    <h6 class="fontbold">Página principal <i class="mdi-content-create right click suave editar-pag-principal" data-idpag='<?php echo utf8_encode($row->idpagina_principal); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' data-desc='<?php echo utf8_encode($row->ds_descricao); ?>'></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
-                    <p><b>Descrição:</b>descrição da página aqui</p>
+                    <p><b>Descrição:</b><?php echo utf8_encode($row->ds_descricao); ?></p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?> </p>
 
                     <div class="overflow suave">
@@ -92,10 +92,10 @@ if (isset($_SESSION['login'])) {
                 while($row = $rs->fetch(PDO::FETCH_OBJ)){
                     ?>
 
-                    <h6 class="fontbold">Página tipo de conta <i class="mdi-content-create right click suave editar-pag-tipo-conta" data-idtipc='<?php echo utf8_encode($row->idpagina_tipo_conta); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
+                    <h6 class="fontbold">Página tipo de conta <i class="mdi-content-create right click suave editar-pag-tipo-conta" data-idtipc='<?php echo utf8_encode($row->idpagina_tipo_conta); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' data-desc='<?php echo utf8_encode($row->ds_descricao); ?>'></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
-                    <p><b>Descrição:</b>descrição da página aqui</p>
+                    <p><b>Descrição:</b><?php echo utf8_encode($row->ds_descricao); ?></p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?> </p>
 
                     <div class="overflow suave">
@@ -127,10 +127,10 @@ if (isset($_SESSION['login'])) {
                 $rs = $con->query("select * from pagina_faq;");
                 while($row = $rs->fetch(PDO::FETCH_OBJ)){
                     ?>
-                    <h6 class="fontbold">Página faq <i class="mdi-content-create right click suave editar-pag-faq" data-idfaq='<?php echo utf8_encode($row->idpagina_faq); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
+                    <h6 class="fontbold">Página faq <i class="mdi-content-create right click suave editar-pag-faq" data-idfaq='<?php echo utf8_encode($row->idpagina_faq); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' data-desc='<?php echo utf8_encode($row->ds_descricao); ?>'></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
-                    <p><b>Descrição:</b>descrição da página aqui</p>
+                    <p><b>Descrição:</b><?php echo utf8_encode($row->ds_descricao); ?></p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?></p>
 
                     <div class="overflow suave">
@@ -162,10 +162,10 @@ if (isset($_SESSION['login'])) {
                 $rs = $con->query("select * from pagina_blog;");
                 while($row = $rs->fetch(PDO::FETCH_OBJ)){
                     ?>
-                    <h6 class="fontbold">Página Blog <i class="mdi-content-create right click suave editar-pag-blog" data-idblog='<?php echo utf8_encode($row->idpagina_blog); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' ></i></h6>
+                    <h6 class="fontbold">Página Blog <i class="mdi-content-create right click suave editar-pag-blog" data-idblog='<?php echo utf8_encode($row->idpagina_blog); ?>' data-titulo='<?php echo utf8_encode($row->ds_titulo); ?>'  data-palavra='<?php echo utf8_encode($row->ds_palavras_chaves); ?>' data-desc='<?php echo utf8_encode($row->ds_descricao); ?>'></i></h6>
 
                     <p><b>Titulo:</b><?php echo utf8_encode($row->ds_titulo); ?></p>
-                    <p><b>Descrição:</b>descrição da página aqui</p>
+                    <p><b>Descrição:</b><?php echo utf8_encode($row->ds_descricao); ?></p>
                     <p><b>Palavras chave:</b><?php echo utf8_encode($row->ds_palavras_chaves); ?></p>
 
                     <div class="overflow suave">

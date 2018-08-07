@@ -607,36 +607,56 @@ function editarInfos(){
         var palavra = $(this).attr("data-palavra");
         var titulo = $(this).attr("data-titulo");
         var idpag = $(this).attr("data-idpag");
+        var desc = $(this).attr("data-desc");
 
         $(this).offsetParent().find(".overflow").addClass("active");
         $(".overflow label").addClass("active");
         $("#tituloDaPagina").val(titulo);
         $("#palavrasChave").val(palavra);
         $("#idpag").val(idpag);
+        $("#descricaoDaPagina").val(desc);
     })
 
     $(".pagina h6 .editar-pag-tipo-conta").click(function(){
         var palavra = $(this).attr("data-palavra");
         var titulo = $(this).attr("data-titulo");
         var idtipc = $(this).attr("data-idtipc");
+        var desc = $(this).attr("data-desc");
 
         $(this).offsetParent().find(".overflow").addClass("active");
         $(".overflow label").addClass("active");
         $("#tituloDaPaginaTC").val(titulo);
         $("#palavrasChaveTC").val(palavra);
         $("#idtipc").val(idtipc);
+        $("#descricaoDaPaginaTC").val(desc);
     })
 
     $(".pagina h6 .editar-pag-faq").click(function(){
         var palavra = $(this).attr("data-palavra");
         var titulo = $(this).attr("data-titulo");
         var idfaq = $(this).attr("data-idfaq");
+        var desc = $(this).attr("data-desc");
 
         $(this).offsetParent().find(".overflow").addClass("active");
         $(".overflow label").addClass("active");
         $("#tituloDaPaginaF").val(titulo);
         $("#palavrasChaveF").val(palavra);
         $("#idfaq").val(idfaq);
+        $("#descricaoDaPaginaF").val(desc);
+    })
+
+    $(".pagina h6 .editar-pag-blog").click(function(){
+        var palavra = $(this).attr("data-palavra");
+        var titulo = $(this).attr("data-titulo");
+        var idblog = $(this).attr("data-idblog");
+        var desc = $(this).attr("data-desc");
+
+        $(this).offsetParent().find(".overflow").addClass("active");
+        $(".overflow label").addClass("active");
+        $("#tituloDaPaginaB").val(titulo);
+        $("#palavrasChaveB").val(palavra);
+        $("#idblog").val(idblog);
+        $("#descricaoDaPaginaB").val(desc);
     })
 
     $(".pagina h6 .editar-contatos").click(function(){
@@ -666,18 +686,6 @@ function editarInfos(){
         $("#facebook").val(face);
         $("#Instagram").val(insta);
         $("#youtube").val(yout);
-    })
-
-    $(".pagina h6 .editar-pag-blog").click(function(){
-        var palavra = $(this).attr("data-palavra");
-        var titulo = $(this).attr("data-titulo");
-        var idblog = $(this).attr("data-idblog");
-
-        $(this).offsetParent().find(".overflow").addClass("active");
-        $(".overflow label").addClass("active");
-        $("#tituloDaPaginaB").val(titulo);
-        $("#palavrasChaveB").val(palavra);
-        $("#idblog").val(idblog);
     })
 
     $(".overflow .close").click(function(){
