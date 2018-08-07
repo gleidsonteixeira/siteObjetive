@@ -87,6 +87,9 @@ function novoBanner(){
     });
     $(".novoBanner .close").click(function(){
         $(".novoBanner").removeClass("active");
+        $('#formulario')[0].reset();
+        CKEDITOR.instances.p_conteudo.setData(""); 
+        $("#custId").val('');
     });
     
     $(".lista-usuarios li .editar-usuario").click(function(){
@@ -194,12 +197,17 @@ function novoBanner(){
         var img = $(this).attr("data-img");
         var conteudo = $(this).attr("data-conteudo");
         var palavrasChave = $(this).attr("data-palavrasChave");
+        var autor = $(this).attr("data-autor");
+        var desc = $(this).attr("data-desc");
 
         $(".novoBanner").addClass("active");
         $(".novoBanner label").addClass("active");
         $("#custId").val(id);
         $("#titulo").val(titulo);
         $("#categoria").val(idCategoria);
+        $("#autor").val(autor);
+        $("#descricao").val(desc);
+
         CKEDITOR.instances.p_conteudo.setData(conteudo); 
         $("#palavrasChave").val(palavrasChave);
 

@@ -2,14 +2,15 @@
 session_start();
 include_once 'conexao.php';
 
-if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && isset($_POST['titulo']) && isset($_POST['ds_categoria'])  && isset($_POST['palavrasChave']) && isset($_POST['custId'])){
+if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && isset($_POST['titulo']) && isset($_POST['ds_categoria'])  && isset($_POST['palavrasChave']) && isset($_POST['custId']) && isset($_POST['descricao'])){
 
-	if($_FILES['arquivo']['name'] != '' && $_FILES[ 'arquivo' ][ 'error' ] == 0 && !empty($_POST['titulo']) && !empty($_POST['p_conteudo']) && !empty($_POST['ds_categoria']) && !empty($_POST['palavrasChave']) && empty($_POST['custId'])){ 
+	if($_FILES['arquivo']['name'] != '' && $_FILES[ 'arquivo' ][ 'error' ] == 0 && !empty($_POST['titulo']) && !empty($_POST['p_conteudo']) && !empty($_POST['ds_categoria']) && !empty($_POST['palavrasChave']) && empty($_POST['custId']) && !empty($_POST['descricao'])){ 
 
 		$titulo    = $_POST['titulo'];
 		$categoria 	   = $_POST['ds_categoria'];
 		$p_conteudo 	   = $_POST['p_conteudo'];
 		$palavrasChave 	   = $_POST['palavrasChave'];
+		$descricao = $_POST['descricao'];
 
 		$arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
 		$nome = $_FILES[ 'arquivo' ][ 'name' ];
@@ -26,15 +27,17 @@ if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && is
 
 				$c = $con;
 
-				$sql = $c->prepare("insert into post_blog(`ds_titulo`, `ds_conteudo`, `ds_caminho_img_destaque`, `ds_palavras_chaves`, `categoria_ds_categoria`, data_hora) values(:ds_titulo,:ds_conteudo,:ds_caminho_img_destaque,:ds_palavras_chaves,:categoria_ds_categoria,:data_hora);");
+				$sql = $c->prepare("insert into post_blog(`ds_titulo`, `ds_conteudo`, `ds_caminho_img_destaque`, `ds_palavras_chaves`, `categoria_ds_categoria`, data_hora, ds_autor, `ds_descricao`, `ds_caminho_img_autor`) values(:ds_titulo,:ds_conteudo,:ds_caminho_img_destaque,:ds_palavras_chaves,:categoria_ds_categoria,:data_hora, :ds_autor,'$descricao', :ds_caminho_img_autor);");
 
 				$sql->bindParam("ds_titulo", $titulo, PDO::PARAM_STR);
 				$sql->bindParam("ds_conteudo", $p_conteudo, PDO::PARAM_STR);
 				$sql->bindParam("ds_caminho_img_destaque", $destino, PDO::PARAM_STR);
 				$sql->bindParam("ds_palavras_chaves", $palavrasChave , PDO::PARAM_STR);
 				$sql->bindParam("categoria_ds_categoria", $categoria , PDO::PARAM_STR);
+				$sql->bindParam("ds_autor", $_SESSION['ds_nome'] , PDO::PARAM_STR);
+				$sql->bindParam("ds_caminho_img_autor",$_SESSION['ds_caminho_img'] , PDO::PARAM_STR);
 				date_default_timezone_set('America/Sao_Paulo');
-				$data = date('Y-m-d H:i', time());
+				$data = date('Y-m-d');
 				$sql->bindParam("data_hora", $data , PDO::PARAM_STR);
 
 				$retorno = $sql->execute();
@@ -57,13 +60,14 @@ if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && is
 			echo json_encode($retorno);
 		}
 
-	}else if(!empty($_POST['titulo']) && !empty($_POST['p_conteudo']) && !empty($_POST['ds_categoria']) && !empty($_POST['palavrasChave']) && !empty($_POST['custId'])){ 
+	}else if(!empty($_POST['titulo']) && !empty($_POST['p_conteudo']) && !empty($_POST['ds_categoria']) && !empty($_POST['palavrasChave']) && !empty($_POST['custId']) && !empty($_POST['descricao'])){ 
 
 		$titulo    		= $_POST['titulo'];
 		$categoria 	   	= $_POST['ds_categoria'];
 		$p_conteudo 	= $_POST['p_conteudo'];
 		$palavrasChave 	= $_POST['palavrasChave'];
 		$idpost_blog   	= $_POST['custId'];
+		$descricao		= $_POST['descricao'];
 
 		if($_FILES['arquivo']['name'] != '' && $_FILES[ 'arquivo' ][ 'error' ] == 0){
 			$arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
@@ -85,7 +89,7 @@ if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && is
 					$row = $rs->fetch(PDO::FETCH_OBJ);
 					$caminho_img_antigo = $row->ds_caminho_img_destaque;
 
-					$sql = $c->prepare("update post_blog set `ds_titulo` = :ds_titulo, `ds_conteudo` = :ds_conteudo, `ds_caminho_img_destaque` = :ds_caminho_img_destaque, `ds_palavras_chaves` = :ds_palavras_chaves, `categoria_ds_categoria` = :categoria_ds_categoria where idpost_blog = :idpost_blog;");
+					$sql = $c->prepare("update post_blog set `ds_titulo` = :ds_titulo, `ds_conteudo` = :ds_conteudo, `ds_caminho_img_destaque` = :ds_caminho_img_destaque, `ds_palavras_chaves` = :ds_palavras_chaves, `categoria_ds_categoria` = :categoria_ds_categoria, `ds_descricao` = '$descricao' where idpost_blog = :idpost_blog;");
 
 					$sql->bindParam("ds_titulo", $titulo, PDO::PARAM_STR);
 					$sql->bindParam("ds_conteudo", $p_conteudo, PDO::PARAM_STR);
@@ -121,7 +125,7 @@ if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && is
 		}else{
 			$c = $con;
 
-			$sql = $c->prepare("update post_blog set `ds_titulo` = :ds_titulo, `ds_conteudo` = :ds_conteudo, `ds_palavras_chaves` = :ds_palavras_chaves, `categoria_ds_categoria` = :categoria_ds_categoria where idpost_blog = :idpost_blog;");
+			$sql = $c->prepare("update post_blog set `ds_titulo` = :ds_titulo, `ds_conteudo` = :ds_conteudo, `ds_palavras_chaves` = :ds_palavras_chaves, `ds_descricao` = '$descricao', `categoria_ds_categoria` = :categoria_ds_categoria where idpost_blog = :idpost_blog;");
 
 			$sql->bindParam("ds_titulo", $titulo, PDO::PARAM_STR);
 			$sql->bindParam("ds_conteudo", $p_conteudo, PDO::PARAM_STR);
@@ -141,7 +145,7 @@ if(isset( $_FILES[ 'arquivo' ][ 'name' ] )  && isset($_POST['p_conteudo']) && is
 		}
 	}else{
 
-		$retorno = array('status' => 0, 'mensagem' => 'Nenhum campo pode estar vazio'.$_POST['p_conteudo']); 
+		$retorno = array('status' => 0, 'mensagem' => 'Nenhum campo pode estar vazio'); 
 		echo json_encode($retorno);
 
 	}

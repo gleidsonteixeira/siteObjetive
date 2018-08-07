@@ -42,8 +42,8 @@ if (isset($_SESSION['login'])) {
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122824438-1"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-104056819-1', 'auto');
             ga('send', 'pageview');
@@ -147,8 +147,16 @@ if (isset($_SESSION['login'])) {
                                 <?php 
                                 $rs;
                                 if (isset($_GET['ds_categoria'])) {
-                                    $ds_categoria = $_GET['ds_categoria'];
-                                    $rs = $con->query("select post_blog.* from post_blog where categoria_ds_categoria = '$ds_categoria' LIMIT 5;");
+                                    if(!empty($_GET['ds_categoria'])){
+                                        if ($_GET['ds_categoria'] == 'Todos') {
+                                            $rs = $con->query("select post_blog.* from post_blog LIMIT 5;");
+                                        }else{
+                                            $ds_categoria = $_GET['ds_categoria'];
+                                            $rs = $con->query("select post_blog.* from post_blog where categoria_ds_categoria = '$ds_categoria' LIMIT 5;");
+                                        }
+                                    }else{
+                                        header("Location: blog.php");
+                                    }
                                 }else{
                                     $rs = $con->query("select post_blog.* from post_blog LIMIT 5;");
                                 }
@@ -173,9 +181,16 @@ if (isset($_SESSION['login'])) {
                                                 <h3><b><?php echo $row->ds_titulo ?></b></h3>
                                                 <p><?php echo $row->ds_conteudo ?></p>
                                                 <div class="autor np">
-                                                    <div class="foto"></div>
-                                                    <h6 class="upper mini-title">Nome do autor</h6>
-                                                    <span class="data"><b>00/00/0000<?php //echo $row->data_hora; ?></b></span>
+                                                    <div class="foto"><img src="<?php echo $row->ds_caminho_img_autor; ?>" class="foto"></div>
+                                                    <h6 class="upper mini-title"><?php echo $row->ds_autor ?></h6>
+                                                    <span class="data"><b>
+                                                        <?php 
+                                                        $data = $row->data_hora;
+                                                        $array = explode('-', $data); 
+                                                        echo $array[2]."/".$array[1]."/".$array[0]; 
+                                                        ?>
+
+                                                    </b></span>
                                                 </div>
                                                 <div class="clear"></div>
                                             </div>
@@ -205,9 +220,9 @@ if (isset($_SESSION['login'])) {
                             //$rs = $con->query("select * from contatos;");
                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                         ?>
-                            <li class="font"><?php //echo $row->ds_email; ?></a></li>
-                            <li class="font"><?php //echo $row->ds_telefone; ?></li>
-                            <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
+                        <li class="font"><?php //echo $row->ds_email; ?></a></li>
+                        <li class="font"><?php //echo $row->ds_telefone; ?></li>
+                        <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
                         <?php 
                             //}
                         ?>
@@ -217,16 +232,16 @@ if (isset($_SESSION['login'])) {
                             //$rs = $con->query("select * from redes_sociais;");
                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                         ?>
-                            <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
-                            <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
-                            <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
-                            <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
+                        <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
+                        <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
+                        <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
                         <?php 
                             //}
                             //$rs = $con->query("select * from contatos;");
                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                         ?>
-                            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
                         <?php 
                             //}
                         ?>
@@ -288,7 +303,7 @@ if (isset($_SESSION['login'])) {
             aparecer("footer",400);
         });
     </script>
-    </body>
+</body>
 </html>
 <?php 
 }

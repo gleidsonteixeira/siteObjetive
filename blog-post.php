@@ -26,7 +26,7 @@ if (isset($_SESSION['login'])) {
                     <meta http-equiv="cache-control" content="public" />
                     <meta http-equiv="Pragma" content="public">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-                    <meta name="description" content=""/>
+                    <meta name="description" content='<?php echo utf8_encode($row->ds_descricao); ?>'/>
                     <meta name="keywords" content='<?php echo utf8_encode($row->ds_palavras_chaves); ?>'/>
                     <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
                     <meta name="robots" content="index, follow">
@@ -156,9 +156,15 @@ if (isset($_SESSION['login'])) {
                                                     <h3><b><?php echo $row->ds_titulo ?></b></h3>
                                                     <p><?php echo $row->ds_conteudo ?></p>
                                                     <div class="autor np">
-                                                        <div class="foto"></div>
-                                                        <h6 class="upper mini-title">Nome do autor</h6>
-                                                        <span class="data"><b>00/00/0000<?php //echo $row->data_hora; ?></b></span>
+                                                        <div class="foto"><img src="<?php echo $row->ds_caminho_img_autor; ?>" class="foto"></div>
+                                                        <h6 class="upper mini-title"><?php echo $row->ds_autor ?></h6>
+                                                        <span class="data"><b>
+                                                            <?php 
+                                                            $data = $row->data_hora;
+                                                            $array = explode('-', $data); 
+                                                            echo $array[2]."/".$array[1]."/".$array[0]; 
+                                                            ?>
+                                                        </b></span>
                                                     </div>
                                                     <div class="clear"></div>
                                                 </div>

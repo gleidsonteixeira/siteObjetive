@@ -172,8 +172,8 @@ if (isset($_SESSION['login'])) {
                             <div class="dados">
                                 <h6 class="font truncate"><?php echo $row->ds_titulo ?><span><?php echo $row->ds_categoria ?></span></h6>
                                 <p class="font"><?php echo $row->ds_conteudo ?></p>
-                                <i class="mdi-content-create click editar-blog" data-id='<?php echo $row->idpost_blog ?>' data-titulo='<?php echo $row->ds_titulo ?>' data-dataTime='<?php echo $row->ds_data_hota ?>' data-img='<?php echo $row->ds_caminho_img_destaque ?>' data-idcategoria='<?php echo $row->categoria_idcategoria ?>' data-conteudo='<?php echo $row->ds_conteudo ?>' data-palavrasChave='<?php echo $row->ds_palavras_chaves ?>'></i>
-                                <i class="mdi-action-delete click deletar-blog" data-id='<?php echo $row->idpost_blog ?>'></i>
+                                <i class="mdi-content-create click editar-blog" data-id='<?php echo $row->idpost_blog; ?>' data-titulo='<?php echo $row->ds_titulo; ?>' data-dataTime='<?php echo $row->ds_data_hota; ?>' data-img='<?php echo $row->ds_caminho_img_destaque; ?>' data-idcategoria='<?php echo $row->categoria_idcategoria; ?>' data-conteudo='<?php echo $row->ds_conteudo; ?>' data-palavrasChave='<?php echo $row->ds_palavras_chaves; ?>' data-autor='<?php echo $row->ds_autor ?>' data-desc='<?php echo $row->ds_descricao; ?>'></i>
+                                <i class="mdi-action-delete click deletar-blog" data-id='<?php echo $row->idpost_blog; ?>'></i>
                             </div>
                         </li>
                         <?php 
@@ -190,6 +190,10 @@ if (isset($_SESSION['login'])) {
                                 <div class="input-field">
                                     <input type="text" id="titulo" name="titulo" require>
                                     <label for="titulo">Titulo</label>
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" id="autor" name="autor" value="<?php echo $_SESSION['ds_nome']; ?>" readonly>
+                                    <label for="autor">Autor</label>
                                 </div>
                                 <div class="input-field">
                                     <textarea id="p_conteudo" name="p_conteudo" class="materialize-textarea"></textarea>
