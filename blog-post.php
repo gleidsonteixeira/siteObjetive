@@ -22,7 +22,7 @@ if (isset($_SESSION['login'])) {
                     <title><?php echo utf8_encode($row->ds_titulo); ?></title>
 
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                    <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT">
+                    <!-- <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT"> -->
                     <meta http-equiv="cache-control" content="public" />
                     <meta http-equiv="Pragma" content="public">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -31,9 +31,29 @@ if (isset($_SESSION['login'])) {
                     <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
                     <meta name="robots" content="index, follow">
                     <meta name="language" content="pt-br" />
-
-                    <link rel="canonical" href="https://objetiveti.com.br" />
-                    <link rel="shortlink" href="https://objetiveti.com.br" />
+                    
+                    <meta property="og:locale" content="pt_BR" />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:title" content=<?php echo utf8_encode($row->ds_titulo); ?> />
+                    <meta property="og:description" content='<?php echo utf8_encode($row->ds_descricao); ?>' />
+                    <meta property="og:url" content="https://resultadosdigitais.com.br/blog/rd-e-plug-crm/" />
+                    <meta property="og:site_name" content="Objetive TI" />
+                    <meta property="article:publisher" content="https://www.facebook.com/ObjetiveTI" />
+                    <meta property="article:section" content="" /><!-- colocar a categoria -->
+                    <meta property="article:published_time" content="" /><!-- colocar a data -->
+                    <meta property="article:modified_time" content="" /><!-- colocar a data -->
+                    <meta property="og:updated_time" content="" /><!-- colocar a data -->
+                    <meta property="fb:app_id" content="744878925670282" />
+                    <meta property="og:image" content="" /><!-- colocar a url da imagem -->
+                    <meta property="og:image:secure_url" content="" /><!-- colocar a url da imagem -->
+                    <meta property="og:image:width" content="" /><!-- colocar a largura da imagem -->
+                    <meta property="og:image:height" content="" /><!-- colocar a altura da imagem -->
+                    <meta property="og:image:alt" content="" /><!-- colocar alt da imagem -->
+                    
+                    <link rel="canonical" href="" /><!-- url do post -->
+                    <!-- <link rel="publisher" href="https://plus.google.com/+ResultadosdigitaisBr"/> -->
+                    <link rel="canonical" href="" /><!-- url do post -->
+                    <link rel="shortlink" href="" /><!-- url do post -->
                     <link rel="stylesheet" href="css/font-awesome.css" type="text/css"/>
                     <link rel="stylesheet" href="css/materialize.css" type="text/css"/>
                     <link rel="stylesheet" href="css/extras.css" type="text/css"/>
@@ -79,7 +99,7 @@ if (isset($_SESSION['login'])) {
                                     <a href="#cases" class="scrollto">Cases</a>
                                 </li>
                                 <li>
-                                    <a href="#blog" class="scrollto">Blog</a>
+                                    <a href="blog.php" class="scrollto">Blog</a>
                                 </li>
                                 <!-- <li>
                                     <a href="faq.php">FAQ</a>
@@ -103,70 +123,96 @@ if (isset($_SESSION['login'])) {
                             </div>
                             <div class="container">
                                 <div class="row nm">
-                                <div class="col l3 m5 s12" style="margin-top: 80px;background-color: #a6296e; border-radius: 4px;">
-                                    <div class="pesquisar nm">
-                                        <h6 class="white-text">Pesquisa:</h6>
-                                        <form action="pesquisa.php" method="GET">
-                                            <div class="input-field">
-                                                <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
-                                                <button type="submit"><i class="mdi-action-search"></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="pesquisar">
-                                        <h6 class="white-text">Categorias:</h6>
-                                        <ul class="categorias">
-                                            <?php 
-                                            $rs_cat = $con->query("select * from categoria;");
-                                            while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
-                                                ?>
-                                                <li class="font suave"><a href="blog.php?ds_categoria=<?php echo $row_cat->ds_categoria; ?>"><?php echo $row_cat->ds_categoria; ?></a></li>
-                                                <?php
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-                                    <!-- <div class="pesquisar" style="margin-top: 20px;">
-                                        <h6>Publicações recentes:</h6>
-                                        <ul class="recentes">
-                                            <?php 
-                                            // $rs_cat = $con->query("select idpost_blog,ds_titulo,ds_caminho_img_destaque from post_blog order by data_hora LIMIT 5;");
-                                            // while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
-                                                ?>
-                                                <li class="font suave">
-                                                    <a href="blog-post.php?idpost_blog=<?php //echo $row_cat->idpost_blog ?>">
-                                                        <img src="<?php //echo $row_cat->ds_caminho_img_destaque ?>" class="responsive-img">
-                                                        <?php //echo $row_cat->ds_titulo ?>
-                                                    </a>
-                                                </li>
-                                                <?php
-                                            //}
-                                            ?>
-                                        </ul>
-                                    </div> -->
-                                </div>
-                                    <div class="col l9 m7 s12">
-                                        <ul class="posts">
-                                            <li class="suave unico">
-                                                <div class="imagem">
-                                                    <img src="<?php echo $row->ds_caminho_img_destaque ?>" class="responsive-img">
+                                    <div class="col l3 m5 s12" style="margin-top: 80px;background-color: #a6296e; border-radius: 4px;">
+                                        <div class="pesquisar nm">
+                                            <h6 class="white-text">Pesquisa:</h6>
+                                            <form action="pesquisa.php" method="GET">
+                                                <div class="input-field">
+                                                    <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
+                                                    <button type="submit"><i class="mdi-action-search"></i></button>
                                                 </div>
-                                                <div class="dados">
-                                                    <span class="upper mini-title"><?php echo $row->categoria_ds_categoria ?></span>
-                                                    <h3><b><?php echo $row->ds_titulo ?></b></h3>
-                                                    <p><?php echo $row->ds_conteudo ?></p>
-                                                    <div class="autor np">
-                                                        <div class="foto"><img src="<?php echo $row->ds_caminho_img_autor; ?>" class="foto"></div>
-                                                        <h6 class="upper mini-title"><?php echo $row->ds_autor ?></h6>
-                                                        <span class="data"><b>
-                                                            <?php 
-                                                            $data = $row->data_hora;
-                                                            $array = explode('-', $data); 
-                                                            echo $array[2]."/".$array[1]."/".$array[0]; 
-                                                            ?>
-                                                        </b></span>
+                                            </form>
+                                        </div>
+                                        <div class="pesquisar">
+                                            <h6 class="white-text">Categorias:</h6>
+                                            <ul class="categorias">
+                                                <?php 
+                                                $rs_cat = $con->query("select * from categoria;");
+                                                while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
+                                                    ?>
+                                                    <li class="font suave"><a href="blog.php?ds_categoria=<?php echo $row_cat->ds_categoria; ?>"><?php echo $row_cat->ds_categoria; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <!-- <div class="pesquisar" style="margin-top: 20px;">
+                                            <h6>Publicações recentes:</h6>
+                                            <ul class="recentes">
+                                                <?php 
+                                                // $rs_cat = $con->query("select idpost_blog,ds_titulo,ds_caminho_img_destaque from post_blog order by data_hora LIMIT 5;");
+                                                // while($row_cat = $rs_cat->fetch(PDO::FETCH_OBJ)){
+                                                    ?>
+                                                    <li class="font suave">
+                                                        <a href="blog-post.php?idpost_blog=<?php //echo $row_cat->idpost_blog ?>">
+                                                            <img src="<?php //echo $row_cat->ds_caminho_img_destaque ?>" class="responsive-img">
+                                                            <?php //echo $row_cat->ds_titulo ?>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                //}
+                                                ?>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                    <div class="col l9 m7 s12">
+                                        <ul class="posts" itemscope itemtype="http://schema.org/BlogPosting">
+                                            <li class="suave unico">
+                                                <article>
+                                                    <div class="imagem">
+                                                        <img src="<?php echo $row->ds_caminho_img_destaque ?>" class="responsive-img">
+                                                        <span class="hidden" style="padding:0;" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                                            <meta itemprop="url" content="<?php echo $row->ds_caminho_img_destaque ?>">
+                                                            <meta itemprop="width" content="">
+                                                            <meta itemprop="height" content="">
+                                                        </span>
                                                     </div>
-                                                    <div class="clear"></div>
+                                                    <div class="dados">
+                                                        <header>
+                                                            <span class="upper mini-title"><?php echo $row->categoria_ds_categoria ?></span>
+                                                            <h3 itemprop="headline">
+                                                                <b><?php echo $row->ds_titulo ?></b>
+                                                            </h3>
+                                                            <span class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                                                                <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                                                                    <meta itemprop="url" content="https://objetiveti.com.br/img/logo-objetive-ti2.png">
+                                                                    <meta itemprop="width" content="280">
+                                                                    <meta itemprop="height" content="80">
+                                                                </span>
+                                                                <meta itemprop="name" content="Objetive TI">
+                                                            </span>
+                                                        </header>
+                                                        <main itemprop="articleBody">
+                                                            <p><?php echo $row->ds_conteudo ?></p>
+                                                            <div class="autor np" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                                                <div class="foto">
+                                                                    <img src="<?php echo $row->ds_caminho_img_autor; ?>" class="foto" alt=<?php echo $row->ds_autor ?>>
+                                                                </div>
+                                                                <h6 class="upper mini-title" itemprop="name"><?php echo $row->ds_autor ?></h6>
+                                                                <span class="data">
+                                                                    <b>
+                                                                        <?php 
+                                                                            $data = $row->data_hora;
+                                                                            $array = explode('-', $data); 
+                                                                            echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
+                                                                            echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
+                                                                        ?>
+                                                                    </b>
+                                                                </span>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </main>
+                                                    </article>
                                                 </div>
                                             </li>
                                         </ul>

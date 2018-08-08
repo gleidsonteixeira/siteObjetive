@@ -122,7 +122,7 @@ if (isset($_SESSION['login'])) {
                             <a href="#cases" class="scrollto">Cases</a>
                         </li>
                         <li>
-                            <a href="#blog" class="scrollto">Blog</a>
+                            <a href="blog.php" class="scrollto">Blog</a>
                         </li>
                         <!-- <li>
                             <a href="faq.php">FAQ</a>

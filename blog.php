@@ -18,7 +18,7 @@ if (isset($_SESSION['login'])) {
             <title><?php echo utf8_encode($row->ds_titulo); ?></title>
 
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT">
+            <!-- <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT"> -->
             <meta http-equiv="cache-control" content="public" />
             <meta http-equiv="Pragma" content="public">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -27,11 +27,25 @@ if (isset($_SESSION['login'])) {
             <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
             <meta name="robots" content="index, follow">
             <meta name="language" content="pt-br" />
+
+            <meta property="og:locale" content="pt_BR" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content=<?php echo utf8_encode($row->ds_titulo); ?> />
+            <meta property="og:description" content="<?php echo utf8_encode($row->ds_descricao); ?>" />
+            <meta property="og:url" content="https://objetiveti.com.br/blog.php" />
+            <meta property="og:site_name" content="Objetive TI" />
+            <meta property="fb:app_id" content="744878925670282" />
+            <meta property="og:image" content="" /><!-- colocar a url da imagem -->
+            <meta property="og:image:secure_url" content="" /><!-- colocar a url da imagem -->
+            <meta property="og:image:width" content="" /><!-- colocar a largura da imagem -->
+            <meta property="og:image:height" content="" /><!-- colocar a altura da imagem -->
+            <meta property="og:image:alt" content="" /><!-- colocar alt da imagem -->
             <?php 
         }
         ?>
-        <link rel="canonical" href="https://objetiveti.com.br" />
-        <link rel="shortlink" href="https://objetiveti.com.br" />
+        <link rel="canonical" href="https://objetiveti.com.br/blog.php" />
+        <link rel="shortlink" href="https://objetiveti.com.br/blog.php" />
+        <!-- <link rel="publisher" href="https://plus.google.com/+ResultadosdigitaisBr"/> -->
         <link rel="stylesheet" href="css/font-awesome.css" type="text/css"/>
         <link rel="stylesheet" href="css/materialize.css" type="text/css"/>
         <link rel="stylesheet" href="css/extras.css" type="text/css"/>
@@ -76,7 +90,7 @@ if (isset($_SESSION['login'])) {
                         <a href="#cases" class="scrollto">Cases</a>
                     </li>
                     <li>
-                        <a href="#blog" class="scrollto">Blog</a>
+                        <a href="blog.php" class="scrollto">Blog</a>
                     </li>
                     <!-- <li>
                         <a href="faq.php">FAQ</a>
@@ -165,7 +179,7 @@ if (isset($_SESSION['login'])) {
                                 while($row = $rs->fetch(PDO::FETCH_OBJ)){
                                     ?>
                                     <li class="suave">
-                                        <a href="blog-post.php?idpost_blog=<?php echo $row->idpost_blog ?>">
+                                        <a href="blog-post.php?idpost_blog=<?php echo $row->idpost_blog ?>" title="<?php echo $row->ds_titulo ?>">
                                             <div class="imagem">
                                                 <img src="<?php echo $row->ds_caminho_img_destaque ?>" class="responsive-img">
                                             </div>
@@ -180,16 +194,18 @@ if (isset($_SESSION['login'])) {
                                                 </span>
                                                 <h3><b><?php echo $row->ds_titulo ?></b></h3>
                                                 <p><?php echo $row->ds_conteudo ?></p>
-                                                <div class="autor np">
-                                                    <div class="foto"><img src="<?php echo $row->ds_caminho_img_autor; ?>" class="foto"></div>
-                                                    <h6 class="upper mini-title"><?php echo $row->ds_autor ?></h6>
+                                                <div class="autor np" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                                    <div class="foto">
+                                                        <img src="<?php echo $row->ds_caminho_img_autor; ?>" alt=<?php echo $row->ds_autor ?> class="foto">
+                                                    </div>
+                                                    <h6 class="upper mini-title" itemprop="name"><?php echo $row->ds_autor ?></h6>
                                                     <span class="data"><b>
                                                         <?php 
-                                                        $data = $row->data_hora;
-                                                        $array = explode('-', $data); 
-                                                        echo $array[2]."/".$array[1]."/".$array[0]; 
+                                                            $data = $row->data_hora;
+                                                            $array = explode('-', $data); 
+                                                            echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
+                                                            echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
                                                         ?>
-
                                                     </b></span>
                                                 </div>
                                                 <div class="clear"></div>

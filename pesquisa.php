@@ -74,7 +74,7 @@ if (isset($_SESSION['login'])) {
                                 <a href="#cases" class="scrollto">Cases</a>
                             </li>
                             <li>
-                                <a href="#blog" class="scrollto">Blog</a>
+                                <a href="blog.php" class="scrollto">Blog</a>
                             </li>
                             <!-- <li>
                                 <a href="faq.php">FAQ</a>
@@ -114,10 +114,21 @@ if (isset($_SESSION['login'])) {
                                                     <span class="mini-title upper"><?php echo $row->categoria_ds_categoria ?></span>
                                                     <h3><b><?php echo $row->ds_titulo ?></b></h3>
                                                     <p><?php echo $row->ds_conteudo ?></p>
-                                                    <div class="autor np">
-                                                        <div class="foto"></div>
-                                                        <h6 class="upper mini-title">Nome do autor</h6>
-                                                        <span class="data"><b>00/00/0000<?php //echo $row->data_hora; ?></b></span>
+                                                    <div class="autor np" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                                        <div class="foto">
+                                                            <img src="<?php echo $row->ds_caminho_img_autor; ?>" alt=<?php echo $row->ds_autor ?> class="foto">
+                                                        </div>
+                                                        <h6 class="upper mini-title" itemprop="name"><?php echo $row->ds_autor ?></h6>
+                                                        <span class="data">
+                                                            <b>
+                                                                <?php 
+                                                                    $data = $row->data_hora;
+                                                                    $array = explode('-', $data); 
+                                                                    echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
+                                                                    echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
+                                                                ?>
+                                                            </b>
+                                                        </span>
                                                     </div>
                                                     <div class="clear"></div>
                                                 </div>
