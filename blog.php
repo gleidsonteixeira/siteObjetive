@@ -13,34 +13,57 @@ if (isset($_SESSION['login'])) {
     <head>
         <?php 
         $rs = $con->query("select * from pagina_blog;");
+        $row = $rs->fetch(PDO::FETCH_OBJ);
+        ?>
+        <title><?php echo utf8_encode($row->ds_titulo); ?></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT"> -->
+        <meta http-equiv="cache-control" content="public" />
+        <meta http-equiv="Pragma" content="public">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="description" content="<?php echo utf8_encode($row->ds_descricao); ?>"/>
+        <meta name="keywords" content='<?php echo utf8_encode($row->ds_palavras_chaves); ?>'/>
+        <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="pt-br" />
+
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="<?php echo utf8_encode($row->ds_titulo); ?>" />
+        <meta property="og:description" content="<?php echo utf8_encode($row->ds_descricao); ?>" />
+        <meta property="og:url" content="https://objetiveti.com.br/blog.php" />
+        <meta property="og:site_name" content="Objetive TI" />
+        <meta property="fb:app_id" content="744878925670282" />
+        <?php 
+        $rs;
+        if (isset($_GET['ds_categoria'])) {
+            if(!empty($_GET['ds_categoria'])){
+                if ($_GET['ds_categoria'] == 'Todos') {
+                    $rs = $con->query("select post_blog.* from post_blog LIMIT 5;");
+                }else{
+                    $ds_categoria = $_GET['ds_categoria'];
+                    $rs = $con->query("select post_blog.* from post_blog where categoria_ds_categoria = '$ds_categoria' LIMIT 5;");
+                }
+            }else{
+                header("Location: blog.php");
+            }
+        }else{
+            $rs = $con->query("select post_blog.* from post_blog LIMIT 5;");
+        }
+        $i = 0;
         while($row = $rs->fetch(PDO::FETCH_OBJ)){
+            $imnfo = getimagesize($row->ds_caminho_img_destaque); 
+            $img_w = $imnfo[0];   // largura    
+            $img_h = $imnfo[1];   // altura
             ?>
-            <title><?php echo utf8_encode($row->ds_titulo); ?></title>
-
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <!-- <meta http-equiv="expires" content="Tue, 01 Jan 2019 12:12:12 GMT"> -->
-            <meta http-equiv="cache-control" content="public" />
-            <meta http-equiv="Pragma" content="public">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-            <meta name="description" content="<?php echo utf8_encode($row->ds_descricao); ?>"/>
-            <meta name="keywords" content='<?php echo utf8_encode($row->ds_palavras_chaves); ?>'/>
-            <meta name="author" content="Gleidson Teixeira, g.teixeira@objetiveti.com.br"/>
-            <meta name="robots" content="index, follow">
-            <meta name="language" content="pt-br" />
-
-            <meta property="og:locale" content="pt_BR" />
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content=<?php echo utf8_encode($row->ds_titulo); ?> />
-            <meta property="og:description" content="<?php echo utf8_encode($row->ds_descricao); ?>" />
-            <meta property="og:url" content="https://objetiveti.com.br/blog.php" />
-            <meta property="og:site_name" content="Objetive TI" />
-            <meta property="fb:app_id" content="744878925670282" />
-            <meta property="og:image" content="" /><!-- colocar a url da imagem -->
-            <meta property="og:image:secure_url" content="" /><!-- colocar a url da imagem -->
-            <meta property="og:image:width" content="" /><!-- colocar a largura da imagem -->
-            <meta property="og:image:height" content="" /><!-- colocar a altura da imagem -->
+            <meta property="og:image" content="<?php echo 'https://objetiveti.com.br/'.$row->ds_caminho_img_destaque; ?>" /><!-- colocar a url da imagem -->
+            <meta property="og:image:secure_url" content="<?php echo 'https://objetiveti.com.br/'.$row->ds_caminho_img_destaque; ?>" /><!-- colocar a url da imagem -->
+            <meta property="og:image:width" content="<?php echo $img_w; ?>" /><!-- colocar a largura da imagem -->
+            <meta property="og:image:height" content="<?php echo $img_h; ?>" /><!-- colocar a altura da imagem -->
             <meta property="og:image:alt" content="" /><!-- colocar alt da imagem -->
             <?php 
+            break;
         }
         ?>
         <link rel="canonical" href="https://objetiveti.com.br/blog.php" />
@@ -201,10 +224,10 @@ if (isset($_SESSION['login'])) {
                                                     <h6 class="upper mini-title" itemprop="name"><?php echo $row->ds_autor ?></h6>
                                                     <span class="data"><b>
                                                         <?php 
-                                                            $data = $row->data_hora;
-                                                            $array = explode('-', $data); 
-                                                            echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
-                                                            echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
+                                                        $data = $row->data_hora;
+                                                        $array = explode('-', $data); 
+                                                        echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
+                                                        echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
                                                         ?>
                                                     </b></span>
                                                 </div>

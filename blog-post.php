@@ -39,21 +39,33 @@ if (isset($_SESSION['login'])) {
                     <meta property="og:url" content="https://resultadosdigitais.com.br/blog/rd-e-plug-crm/" />
                     <meta property="og:site_name" content="Objetive TI" />
                     <meta property="article:publisher" content="https://www.facebook.com/ObjetiveTI" />
-                    <meta property="article:section" content="" /><!-- colocar a categoria -->
-                    <meta property="article:published_time" content="" /><!-- colocar a data -->
-                    <meta property="article:modified_time" content="" /><!-- colocar a data -->
-                    <meta property="og:updated_time" content="" /><!-- colocar a data -->
+                    <meta property="article:section" content="<?php echo $row->categoria_ds_categoria ?>" /><!-- colocar a categoria -->
+                    <?php 
+                    $data = $row->data_hora;
+                    $array = explode('-', $data); 
+                    ?>
+                    <meta property="article:published_time" content="<?php echo $array[0]."-".$array[1]."-".$array[2]; ?>" /><!-- colocar a data -->
+                    <meta property="article:modified_time" content="<?php echo $array[0]."-".$array[1]."-".$array[2]; ?>" /><!-- colocar a data -->
+                    <meta property="og:updated_time" content="<?php echo $array[0]."-".$array[1]."-".$array[2]; ?>" /><!-- colocar a data -->
                     <meta property="fb:app_id" content="744878925670282" />
-                    <meta property="og:image" content="" /><!-- colocar a url da imagem -->
-                    <meta property="og:image:secure_url" content="" /><!-- colocar a url da imagem -->
-                    <meta property="og:image:width" content="" /><!-- colocar a largura da imagem -->
-                    <meta property="og:image:height" content="" /><!-- colocar a altura da imagem -->
+                    <meta property="og:image" content="<?php echo 'https://objetiveti.com.br/'.$row->ds_caminho_img_destaque; ?>" /><!-- colocar a url da imagem -->
+                    <meta property="og:image:secure_url" content="<?php echo 'https://objetiveti.com.br/'.$row->ds_caminho_img_destaque; ?>" /><!-- colocar a url da imagem -->
+                    <?php
+                    $imnfo = getimagesize($row->ds_caminho_img_destaque); 
+                    $img_w = $imnfo[0];   // largura    
+                    $img_h = $imnfo[1];
+                    ?>
+                    <meta property="og:image:width" content="<?php echo $img_w; ?>" /><!-- colocar a largura da imagem -->
+                    <meta property="og:image:height" content="<?php echo $img_h; ?>" /><!-- colocar a altura da imagem -->
                     <meta property="og:image:alt" content="" /><!-- colocar alt da imagem -->
-                    
-                    <link rel="canonical" href="" /><!-- url do post -->
+
+                    <?php 
+                    $URL_ATUAL= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    ?>
+                    <link rel="canonical" href="<?php echo $URL_ATUAL; ?>" /><!-- url do post -->
                     <!-- <link rel="publisher" href="https://plus.google.com/+ResultadosdigitaisBr"/> -->
-                    <link rel="canonical" href="" /><!-- url do post -->
-                    <link rel="shortlink" href="" /><!-- url do post -->
+                    <link rel="canonical" href="<?php echo $URL_ATUAL; ?>" /><!-- url do post -->
+                    <link rel="shortlink" href="<?php echo $URL_ATUAL; ?>" /><!-- url do post -->
                     <link rel="stylesheet" href="css/font-awesome.css" type="text/css"/>
                     <link rel="stylesheet" href="css/materialize.css" type="text/css"/>
                     <link rel="stylesheet" href="css/extras.css" type="text/css"/>
@@ -64,8 +76,8 @@ if (isset($_SESSION['login'])) {
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122824438-1"></script>
                     <script>
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
                         ga('create', 'UA-104056819-1', 'auto');
                         ga('send', 'pageview');
@@ -202,10 +214,10 @@ if (isset($_SESSION['login'])) {
                                                                 <span class="data">
                                                                     <b>
                                                                         <?php 
-                                                                            $data = $row->data_hora;
-                                                                            $array = explode('-', $data); 
-                                                                            echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
-                                                                            echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
+                                                                        $data = $row->data_hora;
+                                                                        $array = explode('-', $data); 
+                                                                        echo '<time datetime="'.$array[0]."-".$array[1]."-".$array[2].'">'.$array[2]."-".$array[1]."-".$array[0].'</time>'; 
+                                                                        echo '<meta itemprop="datePublished" content="'.$array[0]."-".$array[1]."-".$array[2].'"/><meta itemprop="dateModified" content="'.$array[0]."-".$array[1]."-".$array[2].'"/>';
                                                                         ?>
                                                                     </b>
                                                                 </span>
@@ -233,9 +245,9 @@ if (isset($_SESSION['login'])) {
                                             //$rs = $con->query("select * from contatos;");
                                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                                         ?>
-                                            <li class="font"><?php //echo $row->ds_email; ?></a></li>
-                                            <li class="font"><?php //echo $row->ds_telefone; ?></li>
-                                            <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
+                                        <li class="font"><?php //echo $row->ds_email; ?></a></li>
+                                        <li class="font"><?php //echo $row->ds_telefone; ?></li>
+                                        <li class="font">Av Desembargador Moreira 1701 - sala 807 - Fortaleza-CE</li>
                                         <?php 
                                             //}
                                         ?>
@@ -245,16 +257,16 @@ if (isset($_SESSION['login'])) {
                                             //$rs = $con->query("select * from redes_sociais;");
                                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                                         ?>
-                                            <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
-                                            <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
-                                            <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
-                                            <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
+                                        <a target="_blank" href="<?php //echo $row->ds_facebook; ?>" class="suave"><i class="fa fa-facebook"></i></a>
+                                        <a target="_blank" href="<?php //echo $row->ds_youtube; ?>" class="suave"><i class="fa fa-youtube-play"></i></a>
+                                        <a target="_blank" href="<?php //echo $row->ds_instagram; ?>" class="suave"><i class="fa fa-instagram"></i></a>
+                                        <a target="_blank" href="#!" class="suave hide"><i class="fa fa-google-plus"></i></a>
                                         <?php 
                                             //}
                                             //$rs = $con->query("select * from contatos;");
                                             //while($row = $rs->fetch(PDO::FETCH_OBJ)){
                                         ?>
-                                            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
+                                        <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php //echo $row->ds_whatsapp; ?>&text=Ol%C3%A1%20Wallet%20Family%20desejo%20saber%20mais" class="suave"><i class="fa fa-whatsapp"></i></a>
                                         <?php 
                                             //}
                                         ?>
