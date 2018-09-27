@@ -5,7 +5,7 @@ if (isset($_SESSION['login'])) {
     ?>
     <!DOCTYPE html>
     <html dir="ltr" lang="pt-BR">
-    <head>
+    <head> 
 
         <title>Wallet Family</title>
 
